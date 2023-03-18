@@ -6,7 +6,7 @@
         <div class="card-body">
           <mat-card class="example-card">
             <mat-card-content>
-              <mat-card-title>Registration</mat-card-title>
+              <mat-card-title>Inscription Etudient</mat-card-title>
 
               <form [formGroup]="RegisterEtudient" (ngSubmit)="onSubmit1()">
                 <ng-container class="col-2">
@@ -14,6 +14,7 @@
                     <mat-step [stepControl]="personForm">
                       <div formArrayName="person" class="mat-mdc-form-field">
                         <ng-template matStepLabel>Details </ng-template>
+                        <h3>Entrez votre donnes de Personele</h3>
                         <mat-form-field appearance="fill">
                           <mat-label>Non</mat-label>
                           <input
@@ -69,6 +70,7 @@
                     </mat-step>
                     <mat-step [stepControl]="etudeForm" label="Etude">
                       <div formGroupName="etude">
+                        <h3>Entrez votre donnes de d`etude</h3>
                         <mat-form-field appearance="fill">
                           <mat-label>Etablisement</mat-label>
                           <select
@@ -132,26 +134,21 @@
                       </div>
                     </mat-step>
                     <mat-step [stepControl]="contactForm">
-                      <ng-template matStepLabel>Vote</ng-template>
+                      <ng-template matStepLabel>Success</ng-template>
+                      <h3>Votre donnes de vote</h3>
+                      <p>{{ email }}</p>
+                      <p>{{ INE }}</p>
+                      <p>Code: a reccupez plus tard</p>
                       <p>You are now done.</p>
-
-                      <div>
-                        <button
-                          mat-flat-button
-                          color="primary"
-                          matStepperPrevious
-                        >
-                          Back
-                        </button>
-                        |
-                        <button
-                          mat-flat-button
-                          color="accent"
-                          [routerLink]="'/info'"
-                        >
-                          Voter
-                        </button>
-                      </div>
+                      <button
+                        mat-flat-button
+                        color="primary"
+                        [routerLink]="'/vote/syndicat'"
+                        style="width: 100%"
+                      >
+                        Accedez au vote
+                      </button>
+                      <div></div>
                     </mat-step>
                   </mat-stepper>
                 </ng-container>
@@ -159,9 +156,6 @@
             </mat-card-content>
           </mat-card>
         </div>
-        <button mat-flat-button color="accent" [routerLink]="'/info'">
-          Voter
-        </button>
       </div>
     </div>
   </div>

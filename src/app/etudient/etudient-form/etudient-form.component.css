@@ -1,9 +1,9 @@
 .mat-stepper-horizontal {
-  margin-top: 8px;
+  margin-top: 18px;
 }
 
 .mat-mdc-form-field {
-  margin-top: 10px;
+  margin-top: 1px;
 }
 .mat-mdc-form-field {
   width: 100%;
@@ -14,5 +14,6 @@
 
 .example-card {
   max-width: 600px;
+
   text-align: center;
 }

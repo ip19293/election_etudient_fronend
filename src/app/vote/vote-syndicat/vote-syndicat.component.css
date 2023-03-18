@@ -1,0 +1,18 @@
+.mat-stepper-horizontal {
+  margin-top: 18px;
+}
+
+.mat-mdc-form-field {
+  margin-top: 10px;
+}
+.mat-mdc-form-field {
+  width: 100%;
+}
+.tab-content {
+  width: 60%;
+}
+
+.example-card {
+  max-width: 800px;
+  text-align: center;
+}

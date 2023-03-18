@@ -13,6 +13,9 @@ import { LoginRequestPayload } from '../login/login_request';
   providedIn: 'root',
 })
 export class AuthService {
+  getSyndicats2() {
+    throw new Error('Method not implemented.');
+  }
   @Output() loggedIn: EventEmitter<boolean> = new EventEmitter();
   @Output() nom: EventEmitter<string> = new EventEmitter();
 
@@ -26,17 +29,28 @@ export class AuthService {
     private localStorage: LocalStorageService
   ) {}
 
-  getSyndicats() {
+  /**  getSyndicats() {
     let token="eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzYWxlbUBnbWFpbC5jb20iLCJpYXQiOjE2Nzg4Njk3MDksImV4cCI6MTY3ODg3MTE0OX0.v5eug5D5CjsMLzCiz1p5V8-VAxU3M2zcJDeLorpsFL8"
     let head_obj=new HttpHeaders().set("Authorization","Bearer " +token)
     this.httpClient.get("http://localhost:8080/election/syndicat/all")
   }
+  */
   getEtudients() {
-    
-    return this.httpClient.get("http://localhost:8080/election/admin/etudient/all");
-}
- 
+    return this.httpClient.get(
+      'http://localhost:8080/election/admin/etudient/all'
+    );
+  }
 
+  getSyndicats() {
+    return this.httpClient.get(
+      'http://localhost:8080/election/public/syndicat'
+    );
+  }
+  getSyndicatNoms() {
+    return this.httpClient.get(
+      'http://localhost:8080/election/public/syndicat'
+    );
+  }
   getJwtToken() {
     return this.localStorage.retrieve('authenticationToken');
   }

@@ -31,9 +31,10 @@ import { HomeComponent } from './admin/home/home.component';
 import { TokenIntercepterService } from './services/token-intercepter.service';
 import { VoteHomePageComponent } from './vote/vote-home-page/vote-home-page.component';
 import { VoteSyndicatComponent } from './vote/vote-syndicat/vote-syndicat.component';
-import { VoteSyndicatSelectComponent } from './vote/vote-syndicat-select/vote-syndicat-select.component';
-import { VoteValideComponent } from './vote/vote-valide/vote-valide.component';
 
+import { VoteValideComponent } from './vote/vote-valide/vote-valide.component';
+import { Home2Component } from './home2/home2.component';
+import { MatSidenavModule } from '@angular/material/sidenav';
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,7 +48,8 @@ import { VoteValideComponent } from './vote/vote-valide/vote-valide.component';
     HomeComponent,
     VoteHomePageComponent,
     VoteSyndicatComponent,
-    VoteSyndicatSelectComponent,
+    VoteValideComponent,
+    Home2Component,
     VoteValideComponent,
   ],
   imports: [
@@ -65,8 +67,15 @@ import { VoteValideComponent } from './vote/vote-valide/vote-valide.component';
     ToastrModule,
     BrowserModule,
     NgxWebstorageModule.forRoot(),
+    MatSidenavModule,
   ],
-  providers: [{provide:HTTP_INTERCEPTORS,useClass:TokenIntercepterService,multi:true}],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenIntercepterService,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -67,6 +67,9 @@ export class EtudientFormComponent {
       console.log(this.RegisterEtudient.value);
     }
   }
+  data1: any;
+  email: any;
+  INE: any;
   register() {
     let data = {
       ine: this.RegisterEtudient.value.person?.INE,
@@ -80,12 +83,17 @@ export class EtudientFormComponent {
       etablisement: this.RegisterEtudient.value.etude?.etablisement,
       fkElection: 1,
     };
-    this.http
-      .post('http://localhost:8080/election/public/etudient/add', data)
-      .subscribe((resultData: any) => {
-        console.log(resultData);
-        alert('Etudient Registered Successfully');
-      });
+    if (this.RegisterEtudient.valid) {
+      this.http
+        .post('http://localhost:8080/election/public/etudient/add', data)
+        .subscribe((resultData: any) => {
+          console.log(resultData);
+          this.data1 = resultData;
+          this.email = 'Email : ' + this.data1.email;
+          this.INE = 'INE : ' + this.data1.ine;
+          alert('Etudient Registered Successfully');
+        });
+    }
   }
   save() {
     this.register();

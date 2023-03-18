@@ -1,1 +1,33 @@
-<p>vote-valide works!</p>
+<div class="login-section">
+  <div class="row justify-conent-center">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-body">
+          <mat-card class="example-card">
+            <mat-card-content>
+              <mat-card-title>Les Resultats d`election</mat-card-title>
+              <table class="table table-border">
+                <thead>
+                  <th>Classemant</th>
+                  <th>Nom</th>
+                  <th>Nombre de vote</th>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of resultats">
+                    <td>{{ item.position }}</td>
+                    <td>{{ item.syndicatNom }}</td>
+                    <td>{{ item.nombreVote }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </mat-card-content>
+          </mat-card>
+        </div>
+        <button mat-flat-button color="primary" [routerLink]="'/vote/syndicat'">
+          Voter
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,1 +1,160 @@
-<p>vote-syndicat works!</p>
+<div class="login-section">
+  <div class="row justify-conent-center">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-body">
+          <mat-card class="example-card">
+            <mat-card-content>
+              <mat-card-title>Accedez au vote</mat-card-title>
+
+              <form [formGroup]="form">
+                <ng-container class="col-2">
+                  <mat-stepper [linear]="isLinear" #stepper>
+                    <mat-step [stepControl]="personForm">
+                      <div formArrayName="person" class="mat-mdc-form-field">
+                        <ng-template matStepLabel>Information </ng-template>
+                        <h3>Entrez votre donnes de vote</h3>
+                        <mat-form-field appearance="fill">
+                          <mat-label>Votre INE</mat-label>
+                          <input
+                            matInput
+                            placeholder="Le numero d`identification"
+                            formControlName="INE"
+                            type="number"
+                          />
+                        </mat-form-field>
+                        <mat-form-field appearance="fill">
+                          <mat-label>Email</mat-label>
+                          <input
+                            type="email"
+                            matInput
+                            placeholder="Votre email"
+                            formControlName="email"
+                          />
+                        </mat-form-field>
+                        <div>
+                          <button
+                            mat-flat-button
+                            color="primary"
+                            matStepperNext
+                          >
+                            Next
+                          </button>
+                        </div>
+                      </div>
+                    </mat-step>
+                    <mat-step [stepControl]="choixForm" label="Choix">
+                      <div formGroupName="choix">
+                        <h3>Choix</h3>
+                        <mat-form-field appearance="fill">
+                          <mat-label>Syndicat</mat-label>
+                          <select matNativeControl formControlName="syndicat">
+                            <option
+                              value="{{ syndicat.syndicatNom }}"
+                              *ngFor="let syndicat of syndicats"
+                              [value]="syndicat.syndicatNom"
+                            >
+                              {{ syndicat.syndicatNom }}
+                            </option>
+                          </select>
+                        </mat-form-field>
+
+                        <div>
+                          <button
+                            mat-flat-button
+                            color="primary"
+                            matStepperPrevious
+                          >
+                            Back
+                          </button>
+                          |
+                          <button
+                            mat-flat-button
+                            color="primary"
+                            matStepperNext
+                          >
+                            Next
+                          </button>
+                        </div>
+                      </div>
+                    </mat-step>
+                    <mat-step [stepControl]="validationForm">
+                      <div formGroupName="validation">
+                        <ng-template matStepLabel>Validation</ng-template>
+                        <h3>Validez votre choix</h3>
+                        <p style="color: rgb(93, 93, 239)">
+                          <a color="primary" (click)="getEmail()">
+                            Reccuperez votre code de vote par mail
+                          </a>
+                        </p>
+                        <mat-form-field appearance="fill">
+                          <mat-label>Code</mat-label>
+                          <input
+                            matInput
+                            placeholder="Votre Code de vote"
+                            formControlName="code"
+                          />
+                        </mat-form-field>
+                        <div>
+                          <button
+                            mat-flat-button
+                            color="primary"
+                            matStepperPrevious
+                          >
+                            Back
+                          </button>
+                          |
+                          <button
+                            mat-flat-button
+                            color="primary"
+                            matStepperNext
+                          >
+                            Next
+                          </button>
+                        </div>
+                      </div>
+                    </mat-step>
+                    <mat-step>
+                      <div>
+                        <ng-template matStepLabel>Validation</ng-template>
+                        <h3 style="color: red">
+                          la validation Est definitive!
+                        </h3>
+                        <h5 style="color: green">{{ message }}</h5>
+                        <p>{{ nom }}</p>
+                        <p>{{ prenom }}</p>
+                        <p>{{ email }}</p>
+
+                        <p>{{ syndicatNom }}</p>
+                        <p>{{ logo }}</p>
+
+                        <div>
+                          <button
+                            mat-flat-button
+                            color="primary"
+                            matStepperPrevious
+                          >
+                            Back
+                          </button>
+                          |
+                          <button
+                            mat-flat-button
+                            color="accent"
+                            (click)="validation1()"
+                          >
+                            Save
+                          </button>
+                        </div>
+                      </div>
+                    </mat-step>
+                  </mat-stepper>
+                </ng-container>
+              </form>
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
